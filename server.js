@@ -3,13 +3,13 @@ const bodyParser = require('body-parser');
 const app = express();
 const getUrl = require('./getUrl');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 mongoose.connect('mongodb://carl0809:Aa168600@ds231951.mlab.com:31951/url-database', { useNewUrlParser: true});
 
 
 app.use(bodyParser.json());
 app.use(cors());
-
 app.get('/',(req, res)=> {
 	res.send('this is working');
 })
