@@ -18,7 +18,7 @@ app.get('/',(req, res)=> {
 
 app.post('/api/urls', (req, res) => {
 	let longUrl = req.body.longUrl;
-	if(longUrl.indexOf("http://") === -1) {
+	if(longUrl.indexOf("http") === -1) {
 		longUrl = "http://" + longUrl;
 	}
 	getUrl.getshortUrl(longUrl, function(url){
