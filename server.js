@@ -10,13 +10,15 @@ mongoose.connect('mongodb://carl0809:Aa168600@ds231951.mlab.com:31951/url-databa
 
 app.use(bodyParser.json());
 app.use(cors());
+
+
 app.get('/',(req, res)=> {
 	res.send('this is working');
 })
 
 app.post('/api/urls', (req, res) => {
 	let longUrl = req.body.longUrl;
-	if(longUrl.indexOf("httl://") === -1) {
+	if(longUrl.indexOf("http://") === -1) {
 		longUrl = "http://" + longUrl;
 	}
 	getUrl.getshortUrl(longUrl, function(url){
