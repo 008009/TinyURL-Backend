@@ -18,11 +18,10 @@ app.get('/',(req, res)=> {
 
 app.post('/api/urls', (req, res) => {
 	let longUrl = req.body.longUrl;
-	if(longUrl.indexOf("www") != -1 && longUrl.indexOf("http") === -1) {
-		longUrl = "http://" + longUrl;
-	}else if(longUrl.indexOf("www") === -1 && longUrl.indexOf("http" === -1)){
-		longUrl = "http://www."+longUrl;
-	}
+	//you could have no www, but you must have http
+    if (longUrl.indexOf("http") === -1) {
+        longUrl = "http://" + longUrl;
+    }
 	getUrl.getshortUrl(longUrl, function(url){
 		res.json(url);
 	})
