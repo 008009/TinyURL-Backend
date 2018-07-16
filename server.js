@@ -18,6 +18,9 @@ app.get('/',(req, res)=> {
 
 app.post('/api/urls', (req, res) => {
 	let longUrl = req.body.longUrl;
+	if(longUrl.indexOf("www") === -1 && longUrl.indexOf("http" === -1)){
+		longUrl = "http://www."+longUrl;
+	}
 	if(longUrl.indexOf("http") === -1) {
 		longUrl = "http://" + longUrl;
 	}
